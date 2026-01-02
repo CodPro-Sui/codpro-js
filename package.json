@@ -1,6 +1,9 @@
 {
   "name": "codpro-js",
   "version": "1.2.1",
+  "bin": {
+    "codpro-js": "./src/index.js"
+  },
   "description": "Simple storage & DOM helper library",
   "main": "dist/codpro-js.umd.js",
   "module": "src/index.js",
