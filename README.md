@@ -1,4 +1,5 @@
 # 📦 `@codpro-js`
+
 ### Lightweight, Secure & Developer-Friendly LocalStorage + DOM Selector Utility
 
 **@codpro-js** is a modern helper library that makes working with  
@@ -24,6 +25,7 @@ with automatic validation, error handling and optional global access.
 ```bash
 npm install @codpro-js
 ```
+
 ## Uses:
 
 ```JavaScript
@@ -58,23 +60,242 @@ Storage.remove("user");
 </script>
 ```
 
+## 📖🖋️ Uses for Browsers
 
-## Methods
+## CDN
+
+```JavaScript
+<script src="https://unpkg.com/codpro-js/dist/codpro-js.umd.js"></script>
 ```
-{
-  Storage: [
-    "set",
-    "get",
-    "has",
-    "update",
-    "remove",
-    "copyStorage",
-    "clear",
-    "remame"
-  ],
-  Selector: [
-    "$",
-    "$$"
-  ]
+
+---
+
+## jsDelivr CDN
+
+Latest version (auto update)
+
+```JavaScript
+<script src="https://cdn.jsdelivr.net/npm/codpro-js/dist/codpro-js.umd.js"></script>
+```
+
+Specific Version
+
+```JavaScript
+<script src="https://cdn.jsdelivr.net/npm/codpro-js@1.2.0/dist/codpro-js.umd.js"></script>
+```
+
+---
+
+## Storage API
+
+Storage.set(key, value)
+=> Save a value to localStorage.
+
+```JavaScript
+CodPro.Storage.set("name", "CodPro");
+CodPro.Storage.set("user", { id: 1, role: "admin" });
+```
+
+Storage.get(key)
+=> Get a value from localStorage.
+
+```JavaScript
+const name = CodPro.Storage.get("name");
+console.log(name);
+```
+
+=> Returns null if key does not exist.
+
+Storage.has(key)
+=> Check if a key exists.
+
+```JavaScript
+if (CodPro.Storage.has("name")) {
+  console.log("Key exists");
 }
 ```
+
+Storage.update(key, value)
+=> Update an existing key.
+
+```JavaScript
+CodPro.Storage.update("name", {name:"CodPro",id:101});
+```
+
+=> Throws error if key does not exist.
+
+Storage.remove(key)
+=> Remove a specific key.
+
+```JavaScript
+CodPro.Storage.remove("name");
+```
+
+Storage.copyStorage(oldKey, newKey)
+=> Copy value from one key to another.
+
+```JavaScript
+CodPro.Storage.copyStorage("token", "token_backup");
+```
+
+Storage.rename(oldKey, newKey)
+=> Rename a key.
+
+```JavaScript
+CodPro.Storage.rename("token_backup", "auth_token");
+```
+
+=> return error if oldKey not exists in storage
+
+Storage.clear()
+=> Clear all localStorage data.
+
+```JavaScript
+CodPro.Storage.clear();
+```
+
+---
+
+---
+
+## Selector API
+
+(: Simple DOM Select
+
+Selector.$(selector)
+=> Select a single element.
+
+```JavaScript
+const body = CodPro.Selector.$("body");
+body.style.background = "#f5f5f5";
+```
+
+Selector.$$(selector)
+=> Select multiple elements.
+
+```JavaScript
+const buttons = CodPro.Selector.$$("button");
+buttons.forEach(btn => btn.style.color = "blue");
+```
+
+---
+
+---
+
+# React Uses
+
+# Install package
+
+NPM User
+
+```bash
+npm i codpro-js
+```
+
+YARN User
+
+```bash
+yarn add codpro-js
+```
+
+# Import in React component
+
+=> codpro-js exports named exports:
+
+```JavaScript
+import { Storage, Selector } from "codpro-js";
+```
+
+Basic Storage usage in React
+Example: App.jsx
+
+```JavaScript
+import { Storage } from "codpro-js";
+
+function App() {
+
+const saveData = () => {
+Storage.set("username", "CodPro");
+};
+
+const readData = () => {
+alert(Storage.get("username"));
+};
+return (
+  <div>
+   <h1>codpro-js in React</h1>
+   <button onClick={saveData}>Save</button>
+  <button onClick={readData}>Read</button>
+  </div>
+ );
+ }
+
+ export default App;
+ ```
+ Using Storage with useEffet
+ ```JavaScript
+ import { Storage } from "codpro-js";
+ import { useEffect } from "react";
+
+ function App() {
+
+ useEffect(() => {
+   if (!Storage.has("count")) {
+    Storage.set("count", 0);
+   }
+ }, []);
+
+const increment = () => {
+const count = Storage.get("count");
+Storage.update("count", count + 1);
+}
+
+return <button onClick={increment}>+</button>;
+}
+
+export default App;
+```
+
+```
+import { Selector } from "codpro-js";
+
+function App() {
+const highlight = () => {
+Selector.$("h1").style.color = "red"
+}
+return (
+ <>
+  <h1>Hello</h1>
+  <button onClick={highlight}>Highlight</button>
+ </>
+ );
+}
+```
+
+```
+import { useRef } from "react";
+import { Storage } from "codpro-js";
+
+function App() {
+const titleRef = useRef(null);
+
+const save = () => {
+Storage.set("msg", "Hello React");
+titleRef.current.style.color = "green"
+ };
+
+return (
+    <>
+     <h1 ref={titleRef}>CodPro</h1>
+     <button onClick={save}>Save</button>
+   </>
+ );
+ export default App;
+);
+}
+```
+
+## 🚀 Author
+CodPro Sui
+GitHub: https://github.com/CodPro-Sui
+npm: https://www.npmjs.com/package/codpro-js
