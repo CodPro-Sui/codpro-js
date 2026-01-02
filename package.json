@@ -1,0 +1,35 @@
+{
+  "name": "codpro-js",
+  "version": "1.2.1",
+  "description": "Simple storage & DOM helper library",
+  "main": "dist/codpro-js.umd.js",
+  "module": "src/index.js",
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "require": "./dist/codpro-js.umd.js"
+    }
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "keywords": [
+    "storage",
+    "localStorage",
+    "selector",
+    "jquery",
+    "codpro",
+    "network",
+    "save",
+    "storage-net",
+    "network"
+  ],
+  "author": "CodPro Sui",
+  "license": "MIT",
+  "type": "module",
+  "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.4",
+    "rollup": "^4.54.0"
+  }
+}
