@@ -19,7 +19,7 @@ export const Storage = {
     }
     try {
       const data = localStorage.getItem(key);
-      return data ? JSON.parse(data) : null;
+      return data === null ? null: JSON.parse(data);
     } catch {
       return null;
     }
@@ -33,6 +33,7 @@ export const Storage = {
   update(key, value) {
     if (!key) {
       throw new Error("key is required");
+    }
       if (value === undefined) {
         throw new Error("value cannot be undefined");
       }
@@ -45,7 +46,6 @@ export const Storage = {
       } catch {
         return false;
       }
-    }
   },
   remove(key) {
     if (!key) {
@@ -66,7 +66,7 @@ export const Storage = {
       throw new Error(`cannot be same old key ${oldKey} and new key ${newKey}`);
     }
     if (!this.has(oldKey)) {
-      throw new Error(`define "${oldKe}" not found in storage`);
+      throw new Error(`define "${oldKey}" not found in storage`);
     }
     try {
       localStorage.setItem(newKey, localStorage.getItem(oldKey));
@@ -112,6 +112,5 @@ export const Selector = {
     return [...document.querySelectorAll(selector)];
   },
 };
-
 
 export default Storage;
