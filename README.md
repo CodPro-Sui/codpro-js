@@ -155,6 +155,100 @@ CodPro.Storage.clear();
 ```
 
 ---
+---
+
+# Version 1.3.5 new methods add
+
+**isObject(key)**
+
+Checks whether the value stored in localStorage under the given key is a plain object.
+
+*Uses*
+
+Syntax:
+```JavaScript
+isObject(key)
+```
+```JavaScript
+localStorage.setItem("user", JSON.stringify({ name: "CodPro" }));
+
+isObject("user"); // true
+isObject("data"); // false
+```
+
+Notes
+Returns false if key does not exist
+Returns false if JSON parsing fails
+Arrays are not treated as objects here
+
+```isArray(key)```
+Checks whether the stored value is an array.
+
+Syntax:
+```isArray(key)```
+
+```
+localStorage.setItem("numbers", JSON.stringify([1, 2, 3]));
+
+isArray("numbers"); // true
+```
+Errors
+Throws error if key is missing
+Returns false if stored data is invalid JSON
+
+---
+Lightweight & avoid pollution prototype
+
+traverse(array, callback)
+A safe custom loop that skips empty array slots.
+Syntax:
+
+```traverse(array, callback)
+```
+
+```traverse([1, , 3], (value, index) => {
+  console.log(value, index);
+  });
+  // Output:
+  // 1 0
+  // 3 2
+  ```
+
+  mapcs(array, callback)
+  Custom implementation of Array.map.
+  Syntax:
+  ```mapcs(array, callback)```
+
+  ```
+  const result = mapcs([1, 2, 3], x => x * 2);
+  console.log(result); // [2, 4, 6]
+  ```
+
+  filtercs(array, callback)
+  Custom implementation of Array.filter.
+  Syntax:
+  ```
+  filtercs(array, callback)
+  ```
+  ```
+  const result = filtercs([1, 2, 3, 4], x => x % 2 === 0);
+  console.log(result); // [2, 4]
+  ```
+
+  reducecs(array, callback, initialValue)
+  Custom implementation of Array.reduce.
+  Syntax:
+  ```reducecs(array, callback, initialValue)```
+
+  ```
+  const sum = reducecs([1, 2, 3], (acc, val) => acc + val, 0);
+  console.log(sum); // 6
+
+  reducecs([1, 2, 3], (acc, val) => acc + val);
+  // Result: 6
+  ```
+
+---
 
 ---
 
