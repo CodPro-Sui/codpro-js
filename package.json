@@ -1,6 +1,6 @@
 {
   "name": "codpro-js",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "bin": {
     "codpro-js": "src/index.js"
   },
