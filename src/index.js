@@ -170,7 +170,7 @@ export const Storage = {
       accumelator = callback(accumelator, array[i], i, array);
     }
     return accumelator;
-  },
+  }
 };
 
 export const Selector = {
