@@ -181,11 +181,12 @@ Returns false if key does not exist
 Returns false if JSON parsing fails
 Arrays are not treated as objects here
 
-```isArray(key)```
+**isArray(key)**
 Checks whether the stored value is an array.
 
 Syntax:
-```isArray(key)```
+```isArray(key)
+```
 
 ```
 localStorage.setItem("numbers", JSON.stringify([1, 2, 3]));
@@ -199,7 +200,7 @@ Returns false if stored data is invalid JSON
 ---
 Lightweight & avoid pollution prototype
 
-traverse(array, callback)
+**traverse(array, callback)**
 A safe custom loop that skips empty array slots.
 Syntax:
 
@@ -214,18 +215,20 @@ Syntax:
   // 3 2
   ```
 
-  mapcs(array, callback)
+  **mapcs(array, callback)**
   Custom implementation of Array.map.
   Syntax:
-  ```mapcs(array, callback)```
+  ```mapcs(array, callback)
+  ```
 
   ```
   const result = mapcs([1, 2, 3], x => x * 2);
   console.log(result); // [2, 4, 6]
   ```
 
-  filtercs(array, callback)
+  **filtercs(array, callback)**
   Custom implementation of Array.filter.
+
   Syntax:
   ```
   filtercs(array, callback)
@@ -235,10 +238,11 @@ Syntax:
   console.log(result); // [2, 4]
   ```
 
-  reducecs(array, callback, initialValue)
+  **reducecs(array, callback, initialValue)**
   Custom implementation of Array.reduce.
   Syntax:
-  ```reducecs(array, callback, initialValue)```
+  ```reducecs(array, callback, initialValue)
+  ```
 
   ```
   const sum = reducecs([1, 2, 3], (acc, val) => acc + val, 0);

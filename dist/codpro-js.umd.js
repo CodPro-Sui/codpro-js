@@ -173,7 +173,7 @@ var CodPro = (function (exports) {
         accumelator = callback(accumelator, array[i], i, array);
       }
       return accumelator;
-    },
+    }
   };
 
   const Selector = {
